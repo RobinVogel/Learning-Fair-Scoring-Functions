@@ -1,0 +1,7 @@
+{
+    "adapt_step": 0.01, "adapt_step_t": 0.001,
+    "lr": 0.001, "optimizer": "adam", 
+    "display_step": 50, "validation_size": 0.40, "batch_size": 100,  
+    "use_inc_auc_train": 1, "n_incomplete_train": 100,
+    "use_inc_auc_valid": 1, "n_incomplete_valid": 100000
+}
