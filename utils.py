@@ -20,15 +20,20 @@ if int(tf.__version__.split(".")[0]) == 2:
     tf.compat.v1.disable_eager_execution()
     from models.tfv2_model_auc_cons import AUCCons
     from models.tfv2_model_ptw_cons import PtwCons
-    from models.tfv2_model_other_auc_cons import AUCConsBNSP, AUCConsBPSN
+    from models.tfv2_model_other_auc_cons import (AUCConsBNSP,
+                                                  AUCConsBPSN,
+                                                  AUCConsXAUC)
 else:
     from models.model_auc_cons import AUCCons
     from models.model_ptw_cons import PtwCons
-    from models.model_other_auc_cons import AUCConsBNSP, AUCConsBPSN
+    from models.model_other_auc_cons import (AUCConsBNSP,
+                                             AUCConsBPSN,
+                                             AUCConsXAUC)
 
 MODEL_PATH_TO_CLASS = {"auc_cons": AUCCons,
                        "auc_cons_bnsp": AUCConsBNSP,
                        "auc_cons_bpsn": AUCConsBPSN,
+                       "auc_cons_xauc": AUCConsXAUC,
                        "ptw_cons": PtwCons}
 
 PROCESS = psutil.Process(os.getpid())

@@ -392,16 +392,19 @@ class AUCCons(GeneralModel):
 
         return self.auc_est_train(self.sc, self.ph_y)
 
+    def get_filters_auc_defn(self):
+        filt_0 = tf.equal(self.ph_z, 0)
+        filt_1 = tf.equal(self.ph_z, 1)
+        return filt_0, filt_1
+
     def define_cost(self, l2_reg):
         self.rel_auc, self.auc = self.define_main_obj()
 
         self.ph_c = tf.compat.v1.placeholder(tf.float32, (), name="c")
 
-        filt_0 = tf.equal(self.ph_z, 0)
+        filt_0, filt_1 = self.get_filters_auc_defn()
         rel_auc_0, auc_0 = self.auc_est_train(self.sc[filt_0],
                                               self.ph_y[filt_0])
-
-        filt_1 = tf.equal(self.ph_z, 1)
         rel_auc_1, auc_1 = self.auc_est_train(self.sc[filt_1],
                                               self.ph_y[filt_1])
 
