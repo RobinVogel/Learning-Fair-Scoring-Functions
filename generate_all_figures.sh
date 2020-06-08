@@ -74,6 +74,7 @@ get_roc_for_paper () {
 
     infold=results/${db_name}/${model_name}/reg_${no_reg}/lambda_${no_lambda}/final_analysis
     outfold=figures/supp/real_data/${db_name}/${model_name}/
+    mkdir -p ${outfold}
     cp ${infold}/roc_sec4.pdf ${outfold}/${outname}.pdf
 }
 
